@@ -3,13 +3,6 @@ from django.contrib import admin
 from .models import Vacancy, Candidate
 
 
-class CandidateInline(admin.TabularInline):
-    fk_name='sendvacancy'
-    model=Candidate
-    verbose_name='резюме кандидата'
-    verbose_name_plural='резюме'
-
-
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ('title', 
@@ -19,4 +12,9 @@ class VacancyAdmin(admin.ModelAdmin):
                     'work_hours', 
                     'work_format')
     
-    inlines = [CandidateInline, ]
+    # prepopulated_fields = {"slug": ("title",)}
+
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'owner', None) is None:
+            obj.owner = request.user
+        obj.save()

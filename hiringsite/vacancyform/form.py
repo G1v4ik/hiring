@@ -35,8 +35,8 @@ class AddVacancyForm(forms.ModelForm):
         label='Фаше резюме (.pdf)'
     )
 
-class VacancyUserForm(forms.ModelForm):
+# class VacancyUserForm(forms.ModelForm):
     
-    model = Candidate
+#     model = Candidate
 
-    fields = '__all__'
+#     fields = '__all__'

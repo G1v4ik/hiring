@@ -1,0 +1,58 @@
+html body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    position: relative;
+    background-color: rgba(64, 64, 64, 1);
+    max-height: 100px;
+    height: 100px;
+    column-gap: 30px;
+    text-align: center;
+    align-content: center;
+    
+}
+
+header img {
+    position: absolute;
+    width: 100px;
+    height: 93px;
+}
+
+.user-login {
+    position: absolute;
+    right: 8%;
+    top: 4%;
+    cursor: pointer;
+}
+
+.nav-header {
+    position: absolute;
+    left: 10%;
+    bottom: 40%;
+    font-size: larger;
+}
+
+a {
+    color: rgb(158, 158, 158);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(255, 253, 253);
+    text-decoration: none;
+}
+
+.name-site {
+    position: absolute;
+    font-size: x-large;
+    bottom: 40%;
+    padding-left: 3%;
+    
+}

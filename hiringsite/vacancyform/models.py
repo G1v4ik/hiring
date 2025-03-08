@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -24,6 +25,15 @@ class EmploymentChoice(models.TextChoices):
 
 
 class Vacancy(models.Model):
+
+    vacancy_id = models.AutoField(primary_key=True)
+
+    owner = models.ForeignKey(User, 
+                              on_delete=models.PROTECT, 
+                              blank=True, 
+                              null=True, 
+                              editable=True)
+
     title = models.CharField(max_length=300, 
                              null=False)
 
@@ -45,5 +55,9 @@ class Vacancy(models.Model):
     work_format = models.CharField(max_length=100, 
                                    verbose_name='Формат работы')
     
-    other = models.TextField(max_length=100000, verbose_name='Другое')
+    show = models.BooleanField(verbose_name='Показывать вакансию', default=True)
+
+    other = models.TextField(max_length=100000, verbose_name='Другое', blank=True)
     
+    def __str__(self):
+        return f"{self.vacancy_id} - {self.title}"
