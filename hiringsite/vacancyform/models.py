@@ -23,9 +23,7 @@ class EmploymentChoice(models.TextChoices):
     part_time = "Частичная", _("Частичная")
     so_so = "Полная/Частичная", _("Полная/Частичная")
 
-
 class Vacancy(models.Model):
-
     vacancy_id = models.AutoField(primary_key=True)
 
     owner = models.ForeignKey(User, 
@@ -36,10 +34,18 @@ class Vacancy(models.Model):
 
     title = models.CharField(max_length=300, 
                              null=False)
+    
+    company = models.CharField(max_length=300, 
+                               verbose_name="Организация / Компания",
+                               null=True)
+
+    city = models.CharField(max_length=100, 
+                            verbose_name="Город",
+                            null=True)
 
     salary = models.DecimalField(max_digits=10,
                                  decimal_places=2, 
-                                 verbose_name='Оплата')
+                                 verbose_name='Оплата в месяц')
 
     employment = models.CharField(max_length=30, 
                                   choices=EmploymentChoice,

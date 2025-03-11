@@ -4,22 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block link_block %}
+        
+    {% endblock link_block %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
     
     <header>
-        <a href="/" class="name-site">NameSite</a>
-        <nav class="nav-header">
-            <a href="#">asdasda</a>
-            <a href="#">asdasda</a>
-            <a href="#">asdasda</a>
-            <a href="#">asdasda</a>
-            <a href="#">asdasda</a>
-            <a href="#">asdasda</a>
-        </nav>
-        <a class="user-login"><img src="{% static 'img/user-logo.png' %}" alt=""></a>
+        <div class="name-site">
+            <a href="/">NameSite</a>
+        </div>
+        <div class="nav-header">
+            <nav>
+                <a href="#">asdasda</a>
+                <a href="#">asdasda</a>
+                <a href="#">asdasda</a>
+                <a href="#">asdasda</a>
+                <a href="#">asdasda</a>
+                <a href="#">asdasda</a>
+            </nav>
+        </div>
+        <div class="user-login">
+            <a href="#">Account</a>
+        </div>
     </header>
     
     <main>

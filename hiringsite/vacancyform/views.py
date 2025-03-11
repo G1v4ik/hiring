@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
 
-from .form import VacancyUserForm
-from .models import Candidate
+from .models import Candidate, Vacancy
 
 
+def vacancy_detail(request, vacancy_id):
+
+    _vacancy = Vacancy.objects.filter(vacancy_id=vacancy_id)
+
+    return render(request, 'html/vacancy_detail.html', {
+        "vacancy":_vacancy,
+    })

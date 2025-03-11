@@ -1,0 +1,78 @@
+
+#container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.empty-block {
+    width: 450px;
+    height: 815px;
+    background-color: rgba(74, 84, 89, 1);
+    margin-top: 30px;
+}
+
+.empty-block p {
+    color: rgba(74, 84, 89, 1);
+}
+
+.title-block-vacancy {
+    text-align: center;
+    font-size: x-large;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.vacancy-all {
+    width: 1200px;
+    height: 815px;
+    justify-content: center;
+}
+
+
+.vacancy {
+    display: grid;
+    grid-template-columns: repeat(1, 855px);
+    justify-content: center;
+    row-gap: 20px;
+    
+}
+
+
+.vacancy-card {
+   border: 1px solid black;
+   border-radius: 0 10px;
+   color: rgb(137, 138, 138);
+   text-decoration: none;
+   padding: 10px 0px 10px 10px;
+}
+
+
+.vacancy-card:hover {
+    color: rgb(31, 30, 30);
+    text-decoration: none;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+}
+
+.vacancy-card{
+    display: grid;
+    grid-template-rows: repeat(4, 30px);
+    align-items: center;
+    text-align: center;
+}
+
+.title-card {
+    font-size: 26px;
+}
+
+.salary-card {
+    font-size: 18px;
+}
+
+.company-card {
+    font-size: 20px;
+}
+
+.city-card {
+    font-size: 18px;
+}

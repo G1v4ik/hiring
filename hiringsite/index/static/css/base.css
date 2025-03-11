@@ -9,50 +9,51 @@ html body {
 
 header {
     display: flex;
-    position: relative;
-    background-color: rgba(64, 64, 64, 1);
+    background-color: rgba(73, 74, 74, 1);
     max-height: 100px;
     height: 100px;
     column-gap: 30px;
-    text-align: center;
-    align-content: center;
     
 }
 
-header img {
-    position: absolute;
-    width: 100px;
-    height: 93px;
-}
 
 .user-login {
-    position: absolute;
-    right: 8%;
-    top: 4%;
-    cursor: pointer;
-}
-
-.nav-header {
-    position: absolute;
-    left: 10%;
-    bottom: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: larger;
 }
 
+.user-login a {
+    display: flex;
+    cursor: pointer;
+}
+
+
+.nav-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    margin-left: 2%;
+}
+
 a {
-    color: rgb(158, 158, 158);
+    color: rgb(171, 175, 175);
     text-decoration: none;
 }
 
 a:hover {
-    color: rgb(255, 253, 253);
+    color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
 .name-site {
-    position: absolute;
-    font-size: x-large;
-    bottom: 40%;
-    padding-left: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 1%;
+    
     
 }

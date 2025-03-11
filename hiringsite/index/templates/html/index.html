@@ -1,4 +1,10 @@
 {% extends 'html/base.html' %}
+{% load static %}
+
+
+{% block link_block %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">    
+{% endblock link_block %}
 
 
 {% block title %}
@@ -7,16 +13,37 @@
 
 
 {% block content %}
-    
-    <div class="container">
 
-        <div class="empty-block"></div>
+    <div id="container">
         <div class="vacancy-all">
             <div class="title-block-vacancy">
                 <h3>Доступные вакансии</h3>
             </div>
             <div class="vacancy">
-                
+                {% for vacancy in vacancies %}
+                    <a class="vacancy-card" href="vacancy/{{ vacancy.vacancy_id }}">
+
+                        <div class="title-card">
+                            <p>{{ vacancy.title }}</p>
+                        </div>
+
+                        <div class="salary-card">
+                            <p>{{ vacancy.salary }} руб. / мес.</p>
+                        </div>
+
+                        <div class="company-card">
+                            <p>{{ vacancy.company }}</p>
+                        </div>
+
+                        <div class="city-card">
+                            <p>{{ vacancy.city }}</p>
+                        </div>
+
+                        <form action="/WantToWork/{{vacancy.vacancy_id}}" method="post">
+                            <button type="submit">Хочу работать</button>
+                        </form>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>

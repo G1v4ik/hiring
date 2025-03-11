@@ -1,0 +1,31 @@
+{% extends 'html/base.html' %}
+
+
+{% block link_block %}
+    <link rel="stylesheet" href="{% static 'css/vacancy_detail.css' %}">    
+{% endblock link_block %}
+
+
+{% block content %}
+
+    <div id="container">
+
+        <div class="vacancy-info">
+
+            <div class="vacancy-info-top">
+
+            </div>
+
+            
+            <div class="vacancy-info-other">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <form action="/WantToWork/{{vacancy.vacancy_id}}" method="post">
+        <button type="submit">Хочу работать</button>
+    </form>
+{% endblock content %}
