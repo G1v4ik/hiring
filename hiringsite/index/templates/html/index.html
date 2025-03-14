@@ -4,6 +4,7 @@
 
 {% block link_block %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">    
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
 {% endblock link_block %}
 
 
@@ -18,6 +19,13 @@
         <div class="vacancy-all">
             <div class="title-block-vacancy">
                 <h3>Доступные вакансии</h3>
+                {% if messages %}
+                    {% for message in messages %}
+                    
+                        <p class='messages'>{{ message }}</p>
+                    
+                    {% endfor %}
+                {% endif %}
             </div>
             <div class="vacancy">
                 {% for vacancy in vacancies %}
@@ -40,6 +48,7 @@
                         </div>
 
                         <form action="/WantToWork/{{vacancy.vacancy_id}}" method="post">
+                            {% csrf_token %}
                             <button type="submit">Хочу работать</button>
                         </form>
                     </a>

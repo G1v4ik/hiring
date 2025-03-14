@@ -1,0 +1,55 @@
+{% extends 'html/base.html' %}
+
+{% load static %}
+
+
+{% block link_block %}
+    <link rel="stylesheet" href="{% static 'css/users_index.css' %}">
+{% endblock link_block %}
+    
+
+{% block content %}
+    
+    <div class="container">
+
+        <div class="user_choose">
+
+
+            {% if request.user.is_authenticated %}
+                <div class="user_isauth">
+                    <h3 class="user_isauth_title">Вы уже Авторизованны</h3>
+                    <form action="{% url 'profile' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Profile</button>
+                    </form>
+
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">LogOut</button>
+                    </form>
+                </div>
+                
+            {% else %}
+                <div class="user_isnotauth">
+                    
+                    <h3 class="user_isnotauth_title">Вы не Авторизованны</h3>
+
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Login</button>
+                    </form>
+    
+                    <form action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Register</button>
+                    </form>                
+                
+                </div>
+            {% endif %}
+
+        </div>
+        
+    </div>
+
+{% endblock content %}
+    

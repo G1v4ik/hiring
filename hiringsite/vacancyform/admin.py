@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.utils.html import format_html
 from django.urls import path
 
-from .models import Vacancy, Candidate, EmploymentChoice
+from .models import Vacancy, EmploymentChoice
 
 from faker import Faker
 
@@ -25,12 +25,14 @@ class VacancyAdmin(admin.ModelAdmin):
             obj.owner = request.user
         obj.save()
     
+
     def get_urls(self):
         urls = super().get_urls()
         my_urls = [
             path('fake_info/', self.fake_info),
         ]
         return my_urls + urls
+    
     
     def fake_info(self, request):
         fake = Faker()

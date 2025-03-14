@@ -1,8 +1,9 @@
 {% extends 'html/base.html' %}
-
+{% load static %}
 
 {% block link_block %}
-    <link rel="stylesheet" href="{% static 'css/vacancy_detail.css' %}">    
+    <link rel="stylesheet" href="{% static 'css/vacancy_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
 {% endblock link_block %}
 
 
@@ -13,19 +14,49 @@
         <div class="vacancy-info">
 
             <div class="vacancy-info-top">
-
+                <h3 class="title">{{ vacancy.title }}</h3>
+                <table>
+                    <tr>
+                        <th>Оплата в месяц</th>
+                        <td>{{ vacancy.salary }}</td>
+                    </tr>
+                    <tr>
+                        <th>Город</th>
+                        <td>{{ vacancy.city }}</td>
+                    </tr>
+                    <tr>
+                        <th>Организация / Компания</th>
+                        <td>{{ vacancy.company }}</td>
+                    </tr>
+                    <tr>
+                        <th>Занятость</th>
+                        <td>{{ vacancy.employment }}</td>
+                    </tr>
+                    <tr>
+                        <th>График</th>
+                        <td>{{ vacancy.work_schedule }}</td>
+                    </tr>
+                    <tr>
+                        <th>Часы работы</th>
+                        <td>{{ vacancy.work_hours }}</td>
+                    </tr>
+                    <tr>
+                        <th>Формат работы</th>
+                        <td>{{ vacancy.work_format }}</td>
+                    </tr>
+                </table>
+                <form action="/WantToWork/{{vacancy.vacancy_id}}" method="post">
+                    <button type="submit">Хочу работать</button>
+                </form>
             </div>
 
             
             <div class="vacancy-info-other">
-
+                <p>{{ vacancy.other }}</p>
             </div>
 
         </div>
 
     </div>
 
-    <form action="/WantToWork/{{vacancy.vacancy_id}}" method="post">
-        <button type="submit">Хочу работать</button>
-    </form>
 {% endblock content %}
