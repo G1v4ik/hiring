@@ -7,6 +7,7 @@ from .models import Vacancy, EmploymentChoice
 
 from faker import Faker
 
+
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ('title', 

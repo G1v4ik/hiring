@@ -3,7 +3,58 @@
 {% load static %}
 
 {% block content %}
+    {% if request.user.is_authenticated %}
 
-    
+        <div class="containet">
+
+            <div class="profile">
+                <div class="table-profile">
+                    <table>
+                        <tr>
+                            <th>Имя Фамилия</th>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Почта</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Логин</th>
+                            <td>{{ user.username }}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="about_you">
+                    <table>
+                        <tr>
+                            <th>О вас</th>
+                            <td>{{ profile.about_you }}</td>
+                        </tr>
+                    </table>
+                    <form action="{% url 'update' request.user.id %}" method="post">{% csrf_token %}
+                        <button type="submit">Update your Info</button>
+                    </form>
+                </div>
+                
+            </div>
+
+        </div>
+
+    {% else %}
+        <div class="containet">
+
+            <div class="profile">
+
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Login</button>
+                </form>
+
+            </div>
+
+        </div>
+    {% endif %}
+   
 
 {% endblock content %}

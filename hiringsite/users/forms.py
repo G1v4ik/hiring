@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
 
+from .models import UserProfile
 
 class UserRegisterForm(UserCreationForm):
 
@@ -50,6 +51,22 @@ class UserLoginForm(AuthenticationForm):
             self.fields['username'].widget.attrs['placeholder'] = 'Логин пользователя'
             self.fields['password'].widget.attrs['placeholder'] = 'Пароль пользователя'
             self.fields['username'].label = 'Логин'
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'autocomplete': 'off'
+            })
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('about_you',)
+
+    def __init__(self, *args, **kwargs):
+        """
+        Обновление стилей формы обновления
+        """
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
             self.fields[field].widget.attrs.update({
                 'class': 'form-control',
                 'autocomplete': 'off'

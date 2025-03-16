@@ -16,6 +16,10 @@ header {
     
 }
 
+header a {
+    margin-right: 10px;
+}
+
 
 .user-login {
     display: flex;

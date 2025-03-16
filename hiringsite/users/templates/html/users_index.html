@@ -14,11 +14,10 @@
 
         <div class="user_choose">
 
-
             {% if request.user.is_authenticated %}
                 <div class="user_isauth">
                     <h3 class="user_isauth_title">Вы уже Авторизованны</h3>
-                    <form action="{% url 'profile' %}" method="post">
+                    <form action="{% url 'profile' request.user.id %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Profile</button>
                     </form>

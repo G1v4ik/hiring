@@ -1,0 +1,71 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+
+
+{% block link_block %}
+    
+    <link rel="stylesheet" href="{% static 'css/vacancy_my.css' %}">
+
+
+{% endblock link_block %}
+    
+
+
+{% block content %}
+    
+    <div class="container">
+
+        
+        <div class="my-vacancy">
+            <div class="add-vacancy">
+                <div class="add-vacancy-form">
+                    <form action="{% url 'vacancy_create' %}" method="post">{% csrf_token %}
+                        <button type="submit">Add Vacancy</button>
+                    </form>
+                </div>
+            </div>
+
+            {% for vacancy in vacancy_user %}
+                
+                <div class="my-vacancy-one">
+                    
+                    <div class="vacancy-info">
+                        <div class="title-card">
+                            <p>{{ vacancy.title }}</p>
+                        </div>
+
+                        <div class="salary-card">
+                            <p>{{ vacancy.salary }} руб. / мес.</p>
+                        </div>
+
+                        <div class="company-card">
+                            <p>{{ vacancy.company }}</p>
+                        </div>
+
+                        <div class="city-card">
+                            <p>{{ vacancy.city }}</p>
+                        </div>
+                    </div>
+                    <div class="actions">
+                            <form class="goto" action="{{ vacancy.get_absolute_url }}">
+                                <button type="submit">Go to</button>
+                            </form>
+                            <form class="response" action="#">
+                                <button type="submit">Response</button>
+                            </form>
+                            <form class="delete" action="{% url 'vacancy_delete' vacancy.pk %}" method="post">{% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                    </div>
+                </div>
+
+            {% endfor %}
+                
+
+        </div>
+
+    </div>
+
+{% endblock content %}
+    

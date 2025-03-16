@@ -1,9 +1,9 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 from phonenumber_field.modelfields import PhoneNumberField
-
 
 
 class EmploymentChoice(models.TextChoices):
@@ -51,7 +51,13 @@ class Vacancy(models.Model):
     
     show = models.BooleanField(verbose_name='Показывать вакансию', default=True)
 
-    other = models.TextField(max_length=100000, verbose_name='Другое', blank=True)
+    other = models.TextField(max_length=100000, verbose_name='Описание', blank=True)
+    
     
     def __str__(self):
         return f"{self.vacancy_id} - {self.title}"
+    
+
+    def get_absolute_url(self):
+        return reverse("vacancy_detail", kwargs={"vacancy_id": self.pk})
+    

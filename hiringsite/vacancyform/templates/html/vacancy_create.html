@@ -1,0 +1,15 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    <form action="{% url 'vacancy_create' %}" method="post">{% csrf_token %}
+
+        {{ form.as_p }}
+        <button type="submit">Add</button>
+
+    </form>
+
+{% endblock content %}
+    

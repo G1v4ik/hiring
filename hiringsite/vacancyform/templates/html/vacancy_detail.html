@@ -45,9 +45,24 @@
                         <td>{{ vacancy.work_format }}</td>
                     </tr>
                 </table>
-                <form action="/WantToWork/{{vacancy.vacancy_id}}" method="post">
-                    <button type="submit">Хочу работать</button>
-                </form>
+                {% if request.user.is_authenticated %}
+
+                            
+                            {% if request.user != vacancy.owner %}
+                                <form action="{% url 'vacancy_response' vacancy.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit">Хочу работать</button>
+                                </form>
+
+                            {% endif %}
+                                
+
+                        {% else %}
+                            <form action="{% url 'user' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Авторизоваться</button>
+                            </form>
+                        {% endif %}
             </div>
 
             
